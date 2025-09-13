@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GifBot</title>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+    body {
+        margin: 0;
+        font-family: 'Roboto', sans-serif;
+        background: #36393f;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        overflow: hidden;
+        position: relative;
+    }
+
+    /* Bloczek u góry */
+    #consent {
+        position: fixed;
+        top: -60px;
+        left: 0;
+        width: 100%;
+        background: rgba(200, 200, 200, 0.85);
+        color: #555;
+        font-size: 12px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 20px;
+        box-sizing: border-box;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        transition: top 0.5s;
+        z-index: 10;
+    }
+    #consent.show { top: 0; }
+
+    #consent .buttons {
+        display: flex;
+        gap: 5px;
+    }
+    #consent button {
+        padding: 4px 10px;
+        border: 1px solid white;
+        background: transparent;
+        color: #555;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    /* Kontener główny */
+    .container {
+        background: #2f3136;
+        padding: 20px 30px 30px 30px; /* mniejsza wysokość */
+        border-radius: 20px;
+        text-align: center;
+        position: relative;
+        width: 350px;
+        box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    }
+
+    /* Logo kwadratowe bez tła */
+    .logo {
+        width: 100px;
+        height: 100px;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+    .logo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    /* Napis */
+    .title {
+        color: white;
+        font-size: 28px;
+        font-weight: 700;
+        margin-top: 10px; /* zaraz pod logo */
+    }
+    .subtitle {
+        color: #b9bbbe;
+        font-size: 18px;
+        margin-bottom: 20px;
+    }
+
+    /* Przyciski */
+    .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 15px;
+    }
+    .buttons a {
+        text-decoration: none;
+        padding: 10px 20px;
+        border-radius: 8px;
+        color: white;
+        font-weight: bold;
+        transition: background 0.3s;
+        background: #5865f2; /* Discord blue */
+    }
+    .buttons a:hover {
+        background: #4752c4;
+    }
+</style>
+</head>
+<body>
+
+<!-- Wyskakujący bloczek u góry -->
+<div id="consent">
+    <span>© 2025 GifBot - wszystkie prawa zastrzeżone</span>
+    <div class="buttons">
+        <button id="accept">Akceptuj</button>
+        <button id="decline">Odrzuć</button>
+    </div>
+</div>
+
+<!-- Kontener główny -->
+<div class="container">
+    <div class="logo">
+        <img src="gif.png" alt="GifBot Logo">
+    </div>
+    <div class="title">GifBot</div>
+    <div class="subtitle">𝒙𝑹𝟐𝑫𝟐</div>
+    <div class="buttons">
+        <a href="https://discord.com/oauth2/authorize?client_id=1415403568000667808&permissions=8&scope=bot" target="_blank">Dodaj bota</a>
+        <a href="https://discord.com/users/1356285897288581340" target="_blank">Owner kontakt</a>
+    </div>
+</div>
+
+<script>
+    const consent = document.getElementById('consent');
+    const acceptBtn = document.getElementById('accept');
+    const declineBtn = document.getElementById('decline');
+
+    // Pokaż bloczek po załadowaniu
+    window.onload = () => {
+        setTimeout(() => {
+            consent.classList.add('show');
+        }, 500);
+    }
+
+    acceptBtn.addEventListener('click', () => {
+        consent.style.display = 'none';
+    });
+
+    declineBtn.addEventListener('click', () => {
+        consent.style.display = 'none';
+    });
+</script>
+
+</body>
+</html>
